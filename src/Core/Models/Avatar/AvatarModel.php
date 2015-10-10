@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Avatar;
+namespace Core\Models\Avatar;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * ---------------------
  * date 2015-09-21
  * 
- * @ORM\Entity(repositoryClass="\Carlohcs\Core\Models\Avatar\AvatarRepository")
+ * @ORM\Entity(repositoryClass="Core\Models\Avatar\AvatarRepository")
  * @ORM\Table(name="avatars")
  */
 class AvatarModel
@@ -50,7 +50,7 @@ class AvatarModel
     
     /**
      * @ORM\OneToOne(
-     * targetEntity="\Carlohcs\Core\Models\Account\AccountModel", inversedBy="avatar", cascade={"all"}),
+     * targetEntity="\Core\Models\Account\AccountModel", inversedBy="avatar", cascade={"all"}),
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
      */
     private $account;
@@ -150,11 +150,11 @@ class AvatarModel
     /**
      * Set account
      *
-     * @param \Carlohcs\Core\Models\Account\AccountModel $account
+     * @param \Core\Models\Account\AccountModel $account
      *
      * @return AvatarModel
      */
-    public function setAccount(\Carlohcs\Core\Models\Account\AccountModel $account = null)
+    public function setAccount(\Core\Models\Account\AccountModel $account = null)
     {
         $this->account = $account;
 
@@ -164,7 +164,7 @@ class AvatarModel
     /**
      * Get account
      *
-     * @return \Carlohcs\Core\Models\Account\AccountModel
+     * @return \Core\Models\Account\AccountModel
      */
     public function getAccount()
     {

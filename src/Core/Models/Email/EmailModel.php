@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Email;
+namespace Core\Models\Email;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ---------------------
  * date 2015-09-17
  * 
- * @ORM\Entity(repositoryClass="\Carlohcs\Core\Models\Email\EmailRepository")
+ * @ORM\Entity(repositoryClass="Core\Models\Email\EmailRepository")
  * @ORM\Table(name="emails")
  */
 class EmailModel
@@ -25,6 +25,11 @@ class EmailModel
 	 * @ORM\Column(name="email", type="string")
 	 */
 	private $email;
+
+    /**
+     * @ORM\Column(name="email_type_id", type="integer", nullable=true)
+     */
+    private $typeId;
 
 	/**
 	 * @ORM\Column(name="account_id", type="integer")
@@ -43,18 +48,25 @@ class EmailModel
 	// ------------------------------------------------------------------
 	
 	/**
-     * @ORM\ManyToOne(targetEntity="\Carlohcs\Core\Models\Account\AccountModel", inversedBy="emails")
+     * @ORM\ManyToOne(targetEntity="\Core\Models\Account\AccountModel", inversedBy="emails")
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
      *
      */
     private $account;
+
+    /**
+     * @ORM\OneToOne(targetEntity="\Core\Models\Email\EmailTypeModel")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
 
 	// ==================================================================
 	//
 	// Constructor
 	//
 	// ------------------------------------------------------------------
-	public function __construct(){
+	public function __construct()
+    {
 
 		//Define the date create
 		$this->createdAt = new \DateTime('now');
@@ -153,11 +165,11 @@ class EmailModel
     /**
      * Set account
      *
-     * @param \Carlohcs\Core\Models\Account\AccountModel $account
+     * @param \Core\Models\Account\AccountModel $account
      *
      * @return EmailModel
      */
-    public function setAccount(\Carlohcs\Core\Models\Account\AccountModel $account = null)
+    public function setAccount(\Core\Models\Account\AccountModel $account = null)
     {
         $this->account = $account;
 
@@ -167,10 +179,58 @@ class EmailModel
     /**
      * Get account
      *
-     * @return \Carlohcs\Core\Models\Account\AccountModel
+     * @return \Core\Models\Account\AccountModel
      */
     public function getAccount()
     {
         return $this->account;
+    }
+
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     *
+     * @return EmailModel
+     */
+    public function setTypeId($typeId)
+    {
+        $this->typeId = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Core\Models\Email\EmailTypeModel $type
+     *
+     * @return EmailModel
+     */
+    public function setType(\Core\Models\Email\EmailTypeModel $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Core\Models\Email\EmailTypeModel
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

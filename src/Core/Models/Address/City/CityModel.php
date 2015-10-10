@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address\City;
+namespace Core\Models\Address\City;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ---------------------
  * date 2015-09-17
  * 
- * @ORM\Entity(repositoryClass="\Carlohcs\Core\Models\Address\City\CityRepository")
+ * @ORM\Entity(repositoryClass="Core\Models\Address\City\CityRepository")
  * @ORM\Table(name="cities")
  */
 class CityModel
@@ -40,7 +40,7 @@ class CityModel
 	// ------------------------------------------------------------------
 
 	/**
-     * @ORM\ManyToOne(targetEntity="\Carlohcs\Core\Models\Address\State\StateModel", inversedBy="cities")
+     * @ORM\ManyToOne(targetEntity="\Core\Models\Address\State\StateModel", inversedBy="cities")
      * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      *
      */
@@ -51,6 +51,20 @@ class CityModel
 	// Getters and Setters
 	//
 	// ------------------------------------------------------------------
+
+    /**
+     * Set id
+     * 
+     * @param string $id
+     *
+     * @return CityModel
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
@@ -113,11 +127,11 @@ class CityModel
     /**
      * Set state
      *
-     * @param \Carlohcs\Core\Models\Address\State\StateModel $state
+     * @param \Core\Models\Address\State\StateModel $state
      *
      * @return CityModel
      */
-    public function setState(\Carlohcs\Core\Models\Address\State\StateModel $state = null)
+    public function setState(\Core\Models\Address\State\StateModel $state = null)
     {
         $this->state = $state;
 
@@ -127,7 +141,7 @@ class CityModel
     /**
      * Get state
      *
-     * @return \Carlohcs\Core\Models\Address\State\StateModel
+     * @return \Core\Models\Address\State\StateModel
      */
     public function getState()
     {

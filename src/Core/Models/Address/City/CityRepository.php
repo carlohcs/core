@@ -1,8 +1,8 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address\City;
+namespace Core\Models\Address\City;
 
-use Carlohcs\Core\Models\AbstractModel;
+use Core\Models\AbstractModel;
 
 /**
  * CityRepository

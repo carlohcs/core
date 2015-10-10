@@ -1,4 +1,4 @@
-<?php namespace Carlohcs\Core\Models;
+<?php namespace Core\Models;
 
 	//Uses
 	use Doctrine\ORM\EntityRepository;
@@ -23,7 +23,7 @@
 	     */
 		public function getCoreBaseName()
 		{
-			return "Carlohcs\Core\Models\\";
+			return "Core\Models\\";
 		}
 
 	    /**

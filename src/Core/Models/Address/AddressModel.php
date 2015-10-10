@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address;
+namespace Core\Models\Address;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ---------------------
  * date 2015-09-17
  * 
- * @ORM\Entity(repositoryClass="\Carlohcs\Core\Models\Address\AddressRepository")
+ * @ORM\Entity(repositoryClass="Core\Models\Address\AddressRepository")
  * @ORM\Table(name="address")
  */
 class AddressModel
@@ -83,19 +83,19 @@ class AddressModel
 	
 	/**
 	 * @ORM\ManyToOne(
-	 * targetEntity="\Carlohcs\Core\Models\Account\AccountModel", inversedBy="address")
+	 * targetEntity="\Core\Models\Account\AccountModel", inversedBy="address")
 	 * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
 	 */
 	private $account;
 
     /**
-     * @ORM\OneToOne(targetEntity="\Carlohcs\Core\Models\Address\State\StateModel")
+     * @ORM\OneToOne(targetEntity="\Core\Models\Address\State\StateModel")
      * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      */
     private $state;
 
     /**
-     * @ORM\OneToOne(targetEntity="\Carlohcs\Core\Models\Address\City\CityModel")
+     * @ORM\OneToOne(targetEntity="\Core\Models\Address\City\CityModel")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;
@@ -348,11 +348,11 @@ class AddressModel
     /**
      * Set account
      *
-     * @param \Carlohcs\Core\Models\Account\AccountModel $account
+     * @param \Core\Models\Account\AccountModel $account
      *
      * @return AddressModel
      */
-    public function setAccount(\Carlohcs\Core\Models\Account\AccountModel $account = null)
+    public function setAccount(\Core\Models\Account\AccountModel $account = null)
     {
         $this->account = $account;
 
@@ -362,7 +362,7 @@ class AddressModel
     /**
      * Get account
      *
-     * @return \Carlohcs\Core\Models\Account\AccountModel
+     * @return \Core\Models\Account\AccountModel
      */
     public function getAccount()
     {
@@ -372,11 +372,11 @@ class AddressModel
     /**
      * Set state
      *
-     * @param \Carlohcs\Core\Models\Address\State\StateModel $state
+     * @param \Core\Models\Address\State\StateModel $state
      *
      * @return AddressModel
      */
-    public function setState(\Carlohcs\Core\Models\Address\State\StateModel $state = null)
+    public function setState(\Core\Models\Address\State\StateModel $state = null)
     {
         $this->state = $state;
 
@@ -386,7 +386,7 @@ class AddressModel
     /**
      * Get state
      *
-     * @return \Carlohcs\Core\Models\Address\State\StateModel
+     * @return \Core\Models\Address\State\StateModel
      */
     public function getState()
     {
@@ -396,11 +396,11 @@ class AddressModel
     /**
      * Set city
      *
-     * @param \Carlohcs\Core\Models\Address\City\CityModel $city
+     * @param \Core\Models\Address\City\CityModel $city
      *
      * @return AddressModel
      */
-    public function setCity(\Carlohcs\Core\Models\Address\City\CityModel $city = null)
+    public function setCity(\Core\Models\Address\City\CityModel $city = null)
     {
         $this->city = $city;
 
@@ -410,7 +410,7 @@ class AddressModel
     /**
      * Get city
      *
-     * @return \Carlohcs\Core\Models\Address\City\CityModel
+     * @return \Core\Models\Address\City\CityModel
      */
     public function getCity()
     {

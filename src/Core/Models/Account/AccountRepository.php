@@ -1,8 +1,8 @@
 <?php
 
-namespace Carlohcs\Core\Models\Account;
+namespace Core\Models\Account;
 
-use Carlohcs\Core\Models\AbstractModel;
+use Core\Models\AbstractModel;
 
 /**
  * AccountRepository

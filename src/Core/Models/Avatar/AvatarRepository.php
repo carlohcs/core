@@ -1,8 +1,8 @@
 <?php
 
-namespace Carlohcs\Core\Models\Avatar;
+namespace Core\Models\Avatar;
 
-use Carlohcs\Core\Models\AbstractModel;
+use Core\Models\AbstractModel;
 
 /**
  * AvatarRepository

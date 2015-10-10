@@ -1,8 +1,8 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address\State;
+namespace Core\Models\Address\State;
 
-use Carlohcs\Core\Models\AbstractModel;
+use Core\Models\AbstractModel;
 
 /**
  * StateRepository

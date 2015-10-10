@@ -1,6 +1,6 @@
 <?php
 
-	namespace Carlohcs\Core\Providers;
+	namespace Core\Providers;
 
 	use Doctrine\ORM\EntityManager;
 	use Doctrine\ORM\Tools\Setup;
@@ -62,7 +62,7 @@
 			$coreModelsPath = __DIR__.'/../Models';
 
 			//ABSTRACT THIS PART
-			$storage = include __DIR__.'/../../config/storage.php';
+			$storage = include __DIR__.'/../../../config/storage.php';
 
 			//path/to/entity-files
 			$paths = [

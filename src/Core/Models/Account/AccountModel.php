@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Account;
+namespace Core\Models\Account;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * ---------------------
  * date 2015-09-15
  * 
- * @ORM\Entity(repositoryClass="\Carlohcs\Core\Models\Account\AccountRepository")
+ * @ORM\Entity(repositoryClass="Core\Models\Account\AccountRepository")
  * @ORM\Table(name="accounts")
  */
 class AccountModel
@@ -60,78 +60,35 @@ class AccountModel
 	// ------------------------------------------------------------------
 	
 	/**
-     *
-     * @ORM\OneToMany(targetEntity="Carlohcs\Core\Models\Email\EmailModel", mappedBy="account", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="\Core\Models\Email\EmailModel", mappedBy="account", cascade={"all"})
      */
     private $emails;
 
     /**
-     *
-     * @ORM\OneToMany(targetEntity="Carlohcs\Core\Models\Address\AddressModel", mappedBy="account", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="\Core\Models\Telephone\TelephoneModel", mappedBy="account", cascade={"all"})
+     */
+    private $telephones;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Core\Models\Address\AddressModel", mappedBy="account", cascade={"all"})
      */
     private $address;
 
     /**
-     * @ORM\OneToOne(targetEntity="Carlohcs\Core\Models\Avatar\AvatarModel", mappedBy="account", cascade={"all"}))
+     * @ORM\OneToOne(targetEntity="\Core\Models\Avatar\AvatarModel", mappedBy="account", cascade={"all"}))
      */
     private $avatar;
-	
-
-	// ==================================================================
-	//
-	// Constructor
-	//
-	// ------------------------------------------------------------------
-	public function __construct()
-    {
-
-		//Define the date create
-		$this->createdAt = new \DateTime('now');
-
-        $this->emails = new ArrayCollection();
-
-        $this->address = new ArrayCollection();
-        
-	}
-
-	// ==================================================================
-	//
-	// Getters and Setters
-	//
-	// ------------------------------------------------------------------
 
     /**
-     * Add email
-     *
-     * @param Carlohcs\Core\Models\Email\EmailModel $email
-     *
-     * @return AccountModel
+     * Constructor
      */
-    public function addEmail(Carlohcs\Core\Models\Email\EmailModel $email)
+    public function __construct()
     {
-        $this->emails[] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Remove email
-     *
-     * @param Carlohcs\Core\Models\Email\EmailModel $email
-     */
-    public function removeEmail(Carlohcs\Core\Models\Email\EmailModel $email)
-    {
-        $this->emails->removeElement($email);
-    }
-
-    /**
-     * Get emails
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEmails()
-    {
-        return $this->emails;
+        //Define the date create
+        $this->createdAt = new \DateTime('now');
+        $this->emails = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->telephones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->address = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -241,88 +198,6 @@ class AccountModel
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return AccountModel
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-    
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Add address
-     *
-     * @param Carlohcs\Core\Models\Address\AddressModel $address
-     *
-     * @return AccountModel
-     */
-    public function addAddress(Carlohcs\Core\Models\Address\AddressModel $address)
-    {
-        $this->address[] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Remove address
-     *
-     * @param Carlohcs\Core\Models\Address\AddressModel $address
-     */
-    public function removeAddress(Carlohcs\Core\Models\Address\AddressModel $address)
-    {
-        $this->address->removeElement($address);
-    }
-
-    /**
-     * Get address
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set avatar
-     *
-     * @param Carlohcs\Core\Models\Avatar\AvatarModel $avatar
-     *
-     * @return AccountModel
-     */
-    public function setAvatar(Carlohcs\Core\Models\Avatar\AvatarModel $avatar = null)
-    {
-        $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return Carlohcs\Core\Models\Avatar\AvatarModel
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
-
-    /**
      * Set active
      *
      * @param boolean $active
@@ -344,5 +219,155 @@ class AccountModel
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return AccountModel
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Add email
+     *
+     * @param \Core\Models\Email\EmailModel $email
+     *
+     * @return AccountModel
+     */
+    public function addEmail(\Core\Models\Email\EmailModel $email)
+    {
+        $this->emails[] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Remove email
+     *
+     * @param \Core\Models\Email\EmailModel $email
+     */
+    public function removeEmail(\Core\Models\Email\EmailModel $email)
+    {
+        $this->emails->removeElement($email);
+    }
+
+    /**
+     * Get emails
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmails()
+    {
+        return $this->emails;
+    }
+
+    /**
+     * Add telephone
+     *
+     * @param \Core\Models\Telephone\TelephoneModel $telephone
+     *
+     * @return AccountModel
+     */
+    public function addTelephone(\Core\Models\Telephone\TelephoneModel $telephone)
+    {
+        $this->telephones[] = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Remove telephone
+     *
+     * @param \Core\Models\Telephone\TelephoneModel $telephone
+     */
+    public function removeTelephone(\Core\Models\Telephone\TelephoneModel $telephone)
+    {
+        $this->telephones->removeElement($telephone);
+    }
+
+    /**
+     * Get telephones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTelephones()
+    {
+        return $this->telephones;
+    }
+
+    /**
+     * Add address
+     *
+     * @param \Core\Models\Address\AddressModel $address
+     *
+     * @return AccountModel
+     */
+    public function addAddress(\Core\Models\Address\AddressModel $address)
+    {
+        $this->address[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \Core\Models\Address\AddressModel $address
+     */
+    public function removeAddress(\Core\Models\Address\AddressModel $address)
+    {
+        $this->address->removeElement($address);
+    }
+
+    /**
+     * Get address
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \Core\Models\Avatar\AvatarModel $avatar
+     *
+     * @return AccountModel
+     */
+    public function setAvatar(\Core\Models\Avatar\AvatarModel $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \Core\Models\Avatar\AvatarModel
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }

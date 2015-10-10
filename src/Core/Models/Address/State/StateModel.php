@@ -1,6 +1,6 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address\State;
+namespace Core\Models\Address\State;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -42,7 +42,7 @@ class StateModel
 	
 	/**
      *
-     * @ORM\OneToMany(targetEntity="\Carlohcs\Core\Models\Address\City\CityModel", mappedBy="state", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="\Core\Models\Address\City\CityModel", mappedBy="state", cascade={"all"})
      */
     private $cities;
 
@@ -59,6 +59,20 @@ class StateModel
     public function __construct()
     {
         $this->cities = new ArrayCollection();
+    }
+
+    /**
+     * Set id
+     * 
+     * @param string $id
+     *
+     * @return StateModel
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -122,11 +136,11 @@ class StateModel
     /**
      * Add city
      *
-     * @param \Carlohcs\Core\Models\Address\City\CityModel $city
+     * @param \Core\Models\Address\City\CityModel $city
      *
      * @return StateModel
      */
-    public function addCity(\Carlohcs\Core\Models\Address\City\CityModel $city)
+    public function addCity(\Core\Models\Address\City\CityModel $city)
     {
         $this->cities[] = $city;
 
@@ -136,9 +150,9 @@ class StateModel
     /**
      * Remove city
      *
-     * @param \Carlohcs\Core\Models\Address\City\CityModel $city
+     * @param \Core\Models\Address\City\CityModel $city
      */
-    public function removeCity(\Carlohcs\Core\Models\Address\City\CityModel $city)
+    public function removeCity(\Core\Models\Address\City\CityModel $city)
     {
         $this->cities->removeElement($city);
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Carlohcs\Core\Models\Email;
+namespace Core\Models\Email;
 
-use Carlohcs\Core\Models\AbstractModel;
+use Core\Models\AbstractModel;
 
 /**
  * EmailRepository

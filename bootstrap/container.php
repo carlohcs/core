@@ -21,6 +21,6 @@
 	$container = new Container;
 
 	//Register the DoctrineServiceProvider
-	$container->register(new Carlohcs\Core\Providers\DoctrineServiceProvider);
+	$container->register(new Core\Providers\DoctrineServiceProvider);
 	
 	return $container;

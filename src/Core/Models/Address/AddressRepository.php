@@ -1,9 +1,9 @@
 <?php
 
-namespace Carlohcs\Core\Models\Address;
+namespace Core\Models\Address;
 
-use Carlohcs\Core\Models\AbstractModel;
-use Carlohcs\Core\Models\Account\AccountModel;
+use Core\Models\AbstractModel;
+use Core\Models\Account\AccountModel;
 
 /**
  * AddressRepository

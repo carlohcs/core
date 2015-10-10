@@ -1,6 +1,6 @@
 <?php 
 
-	namespace Carlohcs\Core\Test;
+	namespace Core\Test;
 
 	use \PHPUnit_Framework_TestCase as PHPUnit;
 	use Doctrine\ORM\Tools\SchemaTool;
@@ -34,7 +34,7 @@
 		
 		public function getContainer()
 		{
-			$container = require __DIR__.'/../../bootstrap/container.php';
+			$container = require __DIR__.'/../../../bootstrap/container.php';
 
 			return $container;
 		}
@@ -115,7 +115,24 @@
             $faker->addProvider(new \Faker\Provider\Person($faker));
             $faker->addProvider(new \Faker\Provider\DateTime($faker));
             $faker->addProvider(new \Faker\Provider\Internet($faker));
+            $faker->addProvider(new \Faker\Provider\en_US\Address($faker));
+            $faker->addProvider(new \Faker\Provider\en_US\PhoneNumber($faker));
 
             return $faker;
+        }
+
+        /**
+         * Helper to get a entity repository from Core
+         *  
+         * @param  string $entityName
+         * @return object $repository
+         */
+        public function getEntityCore($entityName)
+        {
+        	$entity = "Core\\Models\\$entityName";
+
+        	$repository = $this->entityManager->getRepository($entity);
+
+        	return $repository;
         }
 	}
