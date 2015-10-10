@@ -7,9 +7,10 @@ Common models for common applications.
 - [Account](./Account) - You can create and manipulate users with this
 - [Address](./Address) - You can create and manipulate users address with this 
 - [Avatar](./Avatar) - You can set and save users avatars
-- [Email](./Email) - You can create and manipulate users emails with this 
+- [Email](./Email) - You can create and manipulate users emails with this
+- [Telephone](./Telephone) - You can create and manipulate users telephones with this 
 
-...You can create more Models and push to project. Please, collabore with it!
+You can create more models and push to this project. Please, collaborate with us!
 
 
 ##Basic Usage
@@ -20,10 +21,10 @@ Common models for common applications.
 <?php
 
 //Get the container from this repository
-require __DIR__.'/../../bootstrap/container.php';
+require 'vendor/carlohcs/core/bootstrap/container.php';
 
 //Uses
-use Carlohcs\Core\Models\Account\AccountModel;
+use Core\Models\Account\AccountModel;
 use Faker\Factory as FakerFactory;
 
 //Create the Faker object and set the providers
@@ -54,7 +55,7 @@ $entityManager->persist($account);
 $entityManager->flush();
 ```
 
-You can see better executing the tests in this [file](../../tests/Models/AccountModelTest.php).
+You can see better executing the tests in this [file](../../../tests/Models/AccountModelTest.php).
 
 ##Running tests
 
@@ -68,9 +69,7 @@ $ phpunit -c phpunit.xml --testsuite Core
 
 ##Exporting models to schemas
 
-If you has tired to create *tables* manually to your application, forget this! You can create the your own models and export to your database system with some steps.
-
-Follow this steps:
+If you has tired to create *tables* manually to your application, forget this! You can create the your own models and export to your database system with some steps:
 
 1. **Configure the file /var/www/folder-to-your-project/vendor/carlohcs/core/config/storage.php with the your custom settings.**
 2. In terminal:
