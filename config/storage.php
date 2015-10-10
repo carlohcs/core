@@ -8,8 +8,8 @@
 	return [
 
 		'driver' => 'pdo_mysql',
-		'username' => 'root',
-		'password' => 'thmpv77d6f',
+		'username' => 'user',
+		'password' => 'password',
 		'dbname' => 'core',
 		'isDevMode' => true
 
